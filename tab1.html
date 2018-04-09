@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡（使用CSS3中新增的:checked选择器）</title>
+    <style>
+        /*区别于传统的使用JS或者JQuery制作的选项卡，这个案例是利用CSS3中新增的:checked选择器，
+        方便地使选中的内容从隐藏到显示，其实和JS操作的原理是一样的，只不过使用的选择器不同，
+        一个是用JS来选，一个是用CSS来选。*/
+
+        /*使用单选按钮是因为选项卡只能同一时间选择一个，和单选的规则相同，但是单选的圆点不用显示出来，因此要隐藏起来*/
+        input{
+            display: none;
+        }
+        span{
+            width: 80px;
+            height: 30px;
+            border: 1px solid #000;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+            margin-left: -1px;
+            padding: 0 5px;
+        }
+
+        /*当input被选中时，使其下一个兄弟节点span变色，这是CSS3的选择器*/
+        input:checked+span{
+            background:#000;
+            color: #fff;
+        }
+
+        .content{
+            position: absolute;
+            top: 50px;
+            border: 1px solid #000;
+            width: 360px;
+            height: 200px;
+            display: none;
+        }
+
+        /*这里的CSS用法~是指选取所有当前被选中的input下面的所有的content元素*/
+        input:checked~.content{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <label>
+            <input type="radio" checked name="nav" id="">
+            <span>网站首页</span>
+            <div class="content">网站首页的内容</div>
+        </label>
+        <label>
+            <input type="radio" name="nav" id="">
+            <span>公司简介</span>
+            <div class="content">公司简介的内容</div>
+        </label>
+        <label>
+            <input type="radio" name="nav" id="">
+            <span>联系我们</span>
+            <div class="content">联系我们的内容</div>
+        </label>
+        <label>
+            <input type="radio" name="nav" id="">
+            <span>下载客户端</span>
+            <div class="content">下载客户端的内容</div>
+        </label>
+    </div>
+</body>
+</html>

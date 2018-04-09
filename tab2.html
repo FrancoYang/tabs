@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡（使用CSS3中新增的:target选择器）</title>
+    <style>
+        /*这个案例是使用CSS3中新增的target选择器,使得a标签的锚点，能和div的id一一对应，以此来进行选择内容的显示。*/
+        .content{
+            position: absolute;
+            top: 50px;
+            border: 1px solid #000;
+            width: 360px;
+            height: 200px;
+            display: none;
+        }
+        a{
+            text-decoration:none;
+            color: #000;
+            border: 1px solid #000;
+            float: left;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-left: -1px;
+            padding: 0 10px;
+        }
+        
+        /*CSS3中新增的target选择器,使得a标签的锚点，能和div的id一一对应*/
+        .content:target{
+              display: block;
+          }
+
+        /*选择已选中的content的下的a标签*/
+        .content:target+a{
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div id="div1" class="content">网站首页的内容</div>
+        <a href="#div1">网站首页</a>
+        <div id="div2" class="content">公司简介的内容</div>
+        <a href="#div2">公司简介</a>
+        <div id="div3" class="content">联系我们的内容</div>
+        <a href="#div3">联系我们</a>
+        <div id="div4" class="content">下载客户端的内容</div>
+        <a href="#div4">下载客户端</a>
+
+
+    </div>
+</body>
+</html>
