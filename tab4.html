@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡（使用jQuery）</title>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <style>
+
+        .content{
+            position: absolute;
+            top: 50px;
+            border: 1px solid #000;
+            width: 360px;
+            height: 200px;
+            display: none;
+        }
+
+        .active{
+            background:#000;
+            color: #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="wrap1">
+        <input type="button" value="网站首页">
+        <input type="button" value="公司简介">
+        <input type="button" value="联系我们">
+        <input type="button" value="下载客户端">
+
+    </div>
+    <div class="wrap2">
+        <div class="content">网站首页的内容</div>
+        <div class="content">公司简介的内容</div>
+        <div class="content">联系我们的内容</div>
+        <div class="content">下载客户端的内容</div>
+    </div>
+    <script>
+
+        $("input").click(function(){
+            var index=$(this).index();  //通过JQ的index方法获取元素下标
+            $(this).addClass("active").siblings().removeClass("active"); //让当前点击的按钮增加class，剩下的按钮移除class
+            $(".content").eq(index).show().siblings().hide();  //让当前点击按钮对应的divv显示，剩下的隐藏
+
+        })
+
+
+
+
+
+    </script>
+</body>
+</html>

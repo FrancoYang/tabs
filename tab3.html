@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡（使用原生JS）</title>
+    <style>
+
+        .content{
+            position: absolute;
+            top: 50px;
+            border: 1px solid #000;
+            width: 360px;
+            height: 200px;
+            display: none;
+        }
+
+        .active{
+            background:#000;
+            color: #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <input type="button" value="网站首页">
+        <div id="div1" class="content">网站首页的内容</div>
+        <input type="button" value="公司简介">
+        <div id="div2" class="content">公司简介的内容</div>
+        <input type="button" value="联系我们">
+        <div id="div3" class="content">联系我们的内容</div>
+        <input type="button" value="下载客户端">
+        <div id="div4" class="content">下载客户端的内容</div>
+    </div>
+    <script>
+        var aBtn=document.querySelectorAll("input");
+        var aDiv=document.querySelectorAll(".content");
+        for(var i=0;i<aBtn.length;i++){
+            aBtn[i].index=i;  //给每个按钮增加序号
+            aBtn[i].onclick=function(){
+                for(var i=0;i<aBtn.length;i++){
+                    aBtn[i].className="";  //先把所有按钮class清空，再给点击的按钮加上class
+                    aDiv[i].style.display="none";  //先把所有的div都隐藏，再把点击按钮对应的div显示出来
+                }
+                this.className="active";
+                aDiv[this.index].style.display="block";
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
